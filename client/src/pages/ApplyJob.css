@@ -1,0 +1,136 @@
+.apply-job-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.job-card {
+  width: 100%;
+  max-width: 1000px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.job-header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.job-header-left img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.job-header-left-text h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+.job-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.job-info span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.job-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.apply-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  background-color: #0056b3;
+}
+
+.job-description-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.job-description-section div {
+  flex: 1;
+}
+
+.job-description-section h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.rich-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.rich-text p {
+  margin-bottom: 10px;
+}
+
+.more-jobs-section {
+  margin-top: 30px;
+}
+
+.more-jobs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Optional JobCard styling if needed */
+.jobCard {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  flex: 1 1 calc(50% - 20px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.jobCard h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.jobCard p {
+  font-size: 14px;
+  color: #666;
+}

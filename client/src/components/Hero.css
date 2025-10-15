@@ -1,0 +1,105 @@
+/* Hero.css */
+
+.hero-container {
+  max-width: 1280px; /* 2xl:px-20 max-width container */
+  margin: 2.5rem auto; /* my-10 */
+  padding: 0 1rem;
+}
+
+.hero-banner {
+  background: linear-gradient(to right, #6b21a8, #1e0a4f); /* from-purple-800 to-purple-950 */
+  color: white;
+  padding: 4rem 1rem; /* py-16 */
+  text-align: center;
+  border-radius: 0.75rem; /* rounded-xl */
+  margin: 0 0.5rem; /* mx-2 */
+}
+
+.hero-banner h2 {
+  font-size: 2rem; /* text-2xl */
+  font-weight: 500;
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+@media (min-width: 768px) {
+  .hero-banner h2 {
+    font-size: 2.5rem; /* md:text-3xl */
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-banner h2 {
+    font-size: 3rem; /* lg:text-4xl */
+  }
+}
+
+.hero-banner p {
+  max-width: 42rem; /* max-w-xl */
+  margin: 0 auto 2rem auto; /* mb-8 */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 300; /* font-light */
+  padding: 0 1.25rem; /* px-5 */
+}
+
+.hero-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  color: #4b5563; /* text-gray-600 */
+  border-radius: 0.5rem; /* rounded */
+  padding-left: 1rem; /* pl-4 */
+  max-width: 42rem;
+  margin: 0 auto;
+  gap: 0.5rem;
+}
+
+.hero-search div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.hero-search input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.375rem; /* rounded */
+  outline: none;
+  font-size: 0.875rem;
+}
+
+.hero-search button {
+  background-color: #2563eb; /* bg-blue-600 */
+  color: white;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  border-radius: 0.375rem; /* rounded */
+  cursor: pointer;
+}
+
+.hero-trusted {
+  border: 1px solid #d1d5db; /* border-gray-300 */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* shadow-md */
+  margin: 1.25rem 0 0 0; /* mt-5 */
+  padding: 1.5rem; /* p-6 */
+  border-radius: 0.375rem; /* rounded-md */
+  display: flex;
+  justify-content: center;
+}
+
+.hero-trusted .trusted-logos {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem; /* lg:gap-16 */
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.hero-trusted p {
+  font-weight: 500;
+}
+
+.hero-trusted img {
+  height: 1.5rem; /* h-6 */
+}

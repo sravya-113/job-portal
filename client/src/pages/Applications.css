@@ -1,0 +1,132 @@
+.applications-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.resume-section {
+  margin-bottom: 40px;
+}
+
+.resume-display,
+.resume-edit-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resume-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.resume-link:hover {
+  text-decoration: underline;
+}
+
+.resume-edit-btn,
+.resume-save-btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.resume-edit-btn:hover,
+.resume-save-btn:hover {
+  background-color: #0056b3;
+}
+
+.resume-upload-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.resume-upload-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.applications-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.applications-table th,
+.applications-table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.applications-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.company-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.company-cell img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.status-accepted {
+  background-color: #28a745;
+}
+
+.status-rejected {
+  background-color: #dc3545;
+}
+
+.status-pending {
+  background-color: #ffc107;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .applications-container {
+    padding: 15px;
+  }
+
+  .applications-table th,
+  .applications-table td {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  .resume-edit-btn,
+  .resume-save-btn {
+    padding: 6px 12px;
+  }
+}

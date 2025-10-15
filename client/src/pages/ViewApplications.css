@@ -1,0 +1,142 @@
+/* Container */
+.view-applications {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Table wrapper with horizontal scroll on small screens */
+.table-container {
+  overflow-x: auto;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.center-text {
+  text-align: center;
+}
+
+/* User cell with image + name */
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Hide columns on small screens */
+.hide-on-small {
+  display: table-cell;
+}
+
+@media (max-width: 768px) {
+  .hide-on-small {
+    display: none;
+  }
+  .user-img {
+    display: none; /* hide user image on small screens */
+  }
+}
+
+/* Resume link */
+.resume-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 500;
+}
+
+.resume-link:hover {
+  text-decoration: underline;
+}
+
+.resume-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Action button and dropdown menu */
+.action {
+  position: relative;
+  display: inline-block;
+}
+
+.action-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+
+.action-menu {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  min-width: 100px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  flex-direction: column;
+  z-index: 10;
+}
+
+.action:hover .action-menu {
+  display: flex;
+}
+
+.action-menu button {
+  padding: 8px 12px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.action-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+.accept {
+  color: #28a745;
+}
+
+.reject {
+  color: #dc3545;
+}

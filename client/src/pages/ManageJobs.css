@@ -1,0 +1,67 @@
+/* ManageJobs.css */
+
+.manage-jobs-container {
+  max-width: 80rem; /* max-w-5xl */
+  margin: 0 auto;
+  padding: 1rem; /* p-4 */
+}
+
+.manage-jobs-table-wrapper {
+  overflow-x: auto;
+}
+
+.manage-jobs-table {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #e5e7eb; /* gray-200 */
+  border-collapse: collapse;
+}
+
+.manage-jobs-table th,
+.manage-jobs-table td {
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  color: #374151; /* text-gray-700 */
+}
+
+.manage-jobs-table th.text-center,
+.manage-jobs-table td.text-center {
+  text-align: center;
+}
+
+.manage-jobs-table th,
+.manage-jobs-table td {
+  white-space: nowrap;
+}
+
+/* Checkbox scaling */
+.manage-jobs-table input[type="checkbox"] {
+  transform: scale(1.25);
+  margin-left: 1rem;
+}
+
+/* Button */
+.manage-jobs-button {
+  background-color: black;
+  color: white;
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: none;
+}
+
+.manage-jobs-button:hover {
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .max-sm-hidden {
+    display: none;
+  }
+
+  .manage-jobs-table {
+    font-size: 0.875rem; /* max-sm:text-sm */
+  }
+}

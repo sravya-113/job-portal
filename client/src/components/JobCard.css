@@ -1,0 +1,75 @@
+/* JobCard.css */
+
+.job-card {
+  border: 1px solid #e5e7eb; /* border */
+  padding: 1.5rem; /* p-6 */
+  border-radius: 0.5rem; /* rounded */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* shadow */
+  display: flex;
+  flex-direction: column;
+}
+
+.job-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.job-card h4 {
+  font-weight: 500; /* font-medium */
+  font-size: 1.25rem; /* text-xl */
+  margin-top: 0.5rem; /* mt-2 */
+}
+
+.job-card-tags {
+  display: flex;
+  gap: 0.75rem; /* gap-3 */
+  margin-top: 0.5rem; /* mt-2 */
+  font-size: 0.75rem; /* text-xs */
+}
+
+.job-card-tags span {
+  padding: 0.375rem 1rem; /* px-4 py-1.5 */
+  border-radius: 0.375rem; /* rounded */
+}
+
+.job-card-tags .location {
+  background-color: #eff6ff; /* bg-blue-50 */
+  border: 1px solid #bfdbfe; /* border-blue-200 */
+}
+
+.job-card-tags .level {
+  background-color: #fef2f2; /* bg-red-50 */
+  border: 1px solid #fecaca; /* border-red-200 */
+}
+
+.job-card-description {
+  color: #6b7280; /* text-gray-500 */
+  font-size: 0.875rem; /* text-sm */
+  margin-top: 1rem; /* mt-4 */
+}
+
+.job-card-actions {
+  display: flex;
+  gap: 1rem; /* gap-4 */
+  margin-top: 1rem; /* mt-4 */
+  font-size: 0.875rem; /* text-sm */
+}
+
+.job-card-actions button {
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  border-radius: 0.375rem; /* rounded */
+  cursor: pointer;
+}
+
+.job-card-actions .apply-btn {
+  background-color: #2563eb; /* bg-blue-600 */
+  color: white;
+  border: none;
+}
+
+.job-card-actions .learn-btn {
+  background-color: white;
+  color: #6b7280; /* text-gray-500 */
+  border: 1px solid #6b7280; /* border-gray-500 */
+}
