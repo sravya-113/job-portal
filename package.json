@@ -2,7 +2,6 @@
   "name": "job-portal-server",
   "version": "1.0.0",
   "description": "Job portal backend with Node.js, Express, MongoDB, and Sentry v10",
-  "type": "module",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",

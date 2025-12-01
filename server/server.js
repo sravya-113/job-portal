@@ -1059,3 +1059,83 @@ const startServer = async () => {
 };
 
 startServer();
+
+
+
+
+// // server/server.js
+// import express from "express";
+// import cors from "cors";
+// import dotenv from "dotenv";
+// import connectDB from "./config/db.js";
+// import exampleRoutes from "./routes/example.js";
+// import * as Sentry from "@sentry/node";
+// import { nodeProfilingIntegration } from "@sentry/profiling-node";
+// import { clerkWebhooks } from "./controllers/webhooks.js";
+
+// dotenv.config();
+
+// const app = express();
+
+// // ---------------- SENTRY v10 ----------------
+// Sentry.init({
+//   dsn: process.env.SENTRY_DSN,
+//   integrations: [
+//     nodeProfilingIntegration(),
+//     Sentry.httpIntegration(),
+//     Sentry.expressIntegration({ app }),
+//   ],
+//   tracesSampleRate: 1.0,
+//   profilesSampleRate: 1.0,
+//   sendDefaultPii: true,
+// });
+
+// // ---------------- MIDDLEWARE ----------------
+// app.use(cors());
+// app.use(express.json());
+
+// // ---------------- ROUTES ----------------
+// app.use("/api", exampleRoutes);
+
+// app.get("/", (req, res) => res.send("API Working ✅"));
+
+// app.get("/debug-sentry", (req, res) => {
+//   throw new Error("🧨 Test Sentry error");
+// });
+
+// app.post("/webhooks", clerkWebhooks);
+
+// app.get("/heavy", (req, res) => {
+//   let sum = 0;
+//   for (let i = 0; i < 1e7; i++) sum += i;
+//   res.send(`Heavy computation done! Sum=${sum}`);
+// });
+
+// // ---------------- ERROR HANDLER ----------------
+// app.use((err, req, res, next) => {
+//   console.error("Internal Server Error:", err);
+//   res.status(500).json({ message: "Internal Server Error" });
+// });
+
+// // ---------------- START SERVER ----------------
+// const startServer = async () => {
+//   try {
+//     await connectDB();
+
+//     // ✅ Only start server locally (NOT in production)
+//     if (process.env.NODE_ENV !== "production") {
+//       const PORT = process.env.PORT || 5000;
+//       app.listen(PORT, () =>
+//         console.log(`✅ Server running locally on http://localhost:${PORT}`)
+//       );
+//     }
+//   } catch (error) {
+//     console.error("❌ Failed to start server:", error);
+//     process.exit(1);
+//   }
+// };
+
+// startServer();
+
+// // ✅ Export for Vercel Serverless usage
+// export default app;
