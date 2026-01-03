@@ -1,147 +1,61 @@
-Job Portal Server
+# Job Portal Application
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![License](https://img.shields.io/badge/license-ISC-green.svg)
+A full-stack job portal application designed to connect job seekers with recruiters. This platform features a responsive frontend built with React and a robust backend powered by Node.js and Express, facilitating job posting, application management, and secure user authentication.
 
-A robust backend for a Job Portal application, built with Node.js and Express. It features MongoDB for data storage, Sentry (v10) for error monitoring and profiling, and Svix for webhook handling.
+## 🚀 Features
 
-## 🚀 Tech Stack
+### For Job Seekers
+* **Browse Jobs:** View a comprehensive list of available job openings with filtering options.
+* **Apply for Jobs:** Submit applications directly through the portal.
+* **Application Tracking:** View the status of applied jobs via a dedicated dashboard.
+* **User Profile:** Manage personal information and resume uploads.
 
-**Core:**
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+### For Recruiters
+* **Job Management:** Post new job listings, edit existing ones, and manage active openings.
+* **Dashboard:** specialized dashboard to oversee job performance and applications.
+* **Application Review:** View and manage incoming applications from candidates.
+* **Secure Login:** Dedicated login portal for recruiter access.
 
-**Utilities & Monitoring:**
-* **Mongoose:** ODM for MongoDB.
-* **Sentry:** Real-time error tracking and performance profiling.
-* **Svix:** Enterprise-ready webhooks service.
-* **Dotenv:** Environment variable management.
-* **Nodemon:** Development utility for hot-reloading.
+## 🛠️ Tech Stack
 
-## 🛠️ Getting Started
+### Client-Side (Frontend)
+* **Framework:** [React](https://react.dev/) (v19) with [Vite](https://vitejs.dev/)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/) (v4)
+* **Authentication:** [Clerk](https://clerk.com/)
+* **Routing:** [React Router](https://reactrouter.com/)
+* **Notifications:** React Toastify
+* **Rich Text Editor:** Quill
 
-Follow these steps to set up the project locally.
-
-### Prerequisites
-* [Node.js](https://nodejs.org/) (v16 or higher recommended)
-* [MongoDB](https://www.mongodb.com/) (Local instance or Atlas URI)
-
-### Installation
-
-1.  **Clone the repository**
-    ```bash
-    git clone [https://github.com/yourusername/job-portal-server.git](https://github.com/yourusername/job-portal-server.git)
-    cd job-portal-server
-    ```
-
-2.  **Install dependencies**
-    ```bash
-    npm install
-    ```
-
-3.  **Configure Environment Variables**
-    Create a `.env` file in the root directory and add the following variables:
-    ```env
-    PORT=5000
-    MONGO_URI=your_mongodb_connection_string
-    SENTRY_DSN=your_sentry_dsn_key
-    SVIX_API_KEY=your_svix_api_key
-    ```
-
-4.  **Run the Server**
-
-    * **Development Mode** (with Nodemon hot-reload):
-        ```bash
-        npm run dev
-        ```
-
-    * **Production Mode**:
-        ```bash
-        npm start
-        ```
+### Server-Side (Backend)
+* **Runtime:** [Node.js](https://nodejs.org/)
+* **Framework:** [Express.js](https://expressjs.com/)
+* **Database:** [MongoDB](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
+* **Monitoring:** [Sentry](https://sentry.io/)
+* **Webhooks:** Svix (for secure webhook verification)
 
 ## 📂 Project Structure
 
-JOB-PORTAL/
-│
-├── client/
-│   └── public/
-│
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── context/
-│   ├── pages/
-│   │   ├── AddJob.css
-│   │   ├── AddJob.jsx
-│   │   ├── Applications.css
-│   │   ├── Applications.jsx
-│   │   ├── ApplyJob.css
-│   │   ├── ApplyJob.jsx
-│   │   ├── Dashboard.css
-│   │   ├── Dashboard.jsx
-│   │   ├── Home.jsx
-│   │   ├── ManageJobs.css
-│   │   ├── ManageJobs.jsx
-│   │   ├── ViewApplications.css
-│   │   └── ViewApplications.jsx
-│   │
-│   ├── App.css
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-│
-├── .env
-├── .gitignore
-├── eslint.config.js
-└── package.json
-for server:
-           server/
-│
-├── config/
-│   ├── db.js
-│   └── instrument.js
-│
-├── controllers/
-│   └── webhooks.js
-│
-├── middlewares/
-│
-├── models/
-│   └── User.js
-│
-├── routes/
-│   └── example.js
-│
-├── utils/
-│
-├── nodemon.json
-├── server.js
-├── vercel.json
-├── .env
-├── .gitignore
-├── package.json
+The project is organized into a client-server architecture:
 
-🤝 Contributing
-Fork the Project
-
-Create your Feature Branch (git checkout -b feature/AmazingFeature)
-
-Commit your Changes (git commit -m 'Add some AmazingFeature')
-
-Push to the Branch (git push origin feature/AmazingFeature)
-
-Open a Pull Request
-
-📝 License
-This project is licensed under the ISC License.
-
-
----
-
-### **What I did for you:**
-1.  **Detected Sentry:** Added specific references to Sentry for monitoring/profiling in the tech stack and `.env` setup.
-2.  **Detected Svix:** Included it in the stack (commonly used for Webhooks).
-3.  **Corrected Paths:** Since your main file is `"server/server.js"`, I updated the Project Structure section to reflect that the server code lives inside a `/server` folder.
-4.  **Scripts:** I automatically mapped your `"dev": "nodemon..."` script to the "Development Mo
+```text
+├── client/                 # Frontend React Application
+│   ├── public/             # Static assets
+│   ├── src/
+│   │   ├── assets/         # Images and icons
+│   │   ├── components/     # Reusable UI components (Navbar, JobCard, etc.)
+│   │   ├── context/        # React Context API setup
+│   │   ├── pages/          # Application views (Home, Dashboard, ApplyJob, etc.)
+│   │   ├── main.jsx        # Entry point
+│   │   └── App.jsx         # Main component and routing
+│   ├── package.json        # Client dependencies
+│   └── vite.config.js      # Vite configuration
+│
+├── server/                 # Backend Logic
+│   ├── config/             # Database and tool configurations
+│   ├── controllers/        # Route logic (e.g., webhooks)
+│   ├── models/             # Mongoose schemas (User, Job, etc.)
+│   ├── routes/             # API route definitions
+│   └── server.js           # Server entry point
+│
+├── package.json            # Backend/Root dependencies and scripts
+└── vercel.json             # Deployment configuration
