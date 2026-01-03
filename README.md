@@ -59,3 +59,107 @@ The project is organized into a client-server architecture:
 │
 ├── package.json            # Backend/Root dependencies and scripts
 └── vercel.json             # Deployment configuration
+## ⚙️ Installation & Setup
+
+### Prerequisites
+
+*   Node.js (v18+ recommended)
+    
+*   npm or yarn
+    
+*   MongoDB connection string
+    
+
+### 1\. Clone the Repository
+
+Bash
+
+    git clone <repository-url>
+    cd job-portal
+
+### 2\. Backend Setup
+
+The root directory serves as the backend server location.
+
+1.  **Install Dependencies:**
+    
+    Bash
+    
+        npm install
+    
+2.  **Environment Variables:** Create a `.env` file in the root directory and add the following (based on used libraries):
+    
+    Code snippet
+    
+        PORT=5000
+        MONGODB_URI=<your_mongodb_connection_string>
+        SENTRY_DSN=<your_sentry_dsn>
+        CLERK_WEBHOOK_SECRET=<your_clerk_webhook_secret>
+    
+3.  **Run Server:**
+    
+    Bash
+    
+        # Development mode (with nodemon)
+        npm run dev
+        
+        # Production mode
+        npm start
+    
+
+### 3\. Frontend Setup
+
+Navigate to the `client` directory to set up the frontend.
+
+1.  **Navigate to Client:**
+    
+    Bash
+    
+        cd client
+    
+2.  **Install Dependencies:**
+    
+    Bash
+    
+        npm install
+    
+3.  **Environment Variables:** Create a `.env` file in the `client` directory:
+    
+    Code snippet
+    
+        VITE_CLERK_PUBLISHABLE_KEY=<your_clerk_publishable_key>
+        # Add any other public API keys here
+    
+4.  **Run Frontend:**
+    
+    Bash
+    
+        npm run dev
+    
+    The application will typically run on `http://localhost:5173`.
+    
+
+## 📡 API Endpoints
+
+The backend exposes RESTful APIs to handle data operations. While specific routes are defined in the `server/routes` directory, high-level functionality includes:
+
+*   **User Management:** Handling user data and profile updates.
+    
+*   **Webhooks:** processing events from Clerk for authentication synchronization (`/api/webhooks`).
+    
+*   **Jobs:** CRUD operations for job postings.
+    
+*   **Applications:** Submitting and retrieving job applications.
+    
+
+## 🤝 Contributing
+
+1.  Fork the repository.
+    
+2.  Create a new branch (`git checkout -b feature/AmazingFeature`).
+    
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+    
+4.  Push to the branch (`git push origin feature/AmazingFeature`).
+    
+5.  Open a Pull Request.
