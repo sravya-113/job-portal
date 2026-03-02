@@ -5,28 +5,11 @@ import dotenv from "dotenv";
 import connectDB from "../server/config/db.js";
 import exampleRoutes from "../server/routes/example.js";
 import companyRoutes from "../server/routes/companyRoutes.js";
-import * as Sentry from "@sentry/node";
-import { nodeProfilingIntegration } from "@sentry/profiling-node";
 import { clerkWebhooks } from "../server/controllers/webhooks.js";
 
 dotenv.config();
 
 const app = express();
-
-// Initialize Sentry only if DSN present
-if (process.env.SENTRY_DSN) {
-  Sentry.init({
-    dsn: process.env.SENTRY_DSN,
-    integrations: [
-      nodeProfilingIntegration(),
-      Sentry.httpIntegration(),
-      Sentry.expressIntegration({ app }),
-    ],
-    tracesSampleRate: 1.0,
-    profilesSampleRate: 1.0,
-    sendDefaultPii: true,
-  });
-}
 
 // Middlewares
 app.use(cors({ origin: "*" }));
@@ -44,7 +27,8 @@ if (typeof clerkWebhooks === "function") {
 // Health check
 app.get("/", (req, res) => res.json({ message: "API Working ✅" }));
 
-// Global JSON error handler — ensures errors never return plain text
+// Global JSON error handler — always returns JSON, never plain text
+// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, _next) => {
   console.error("Express error:", err?.message || err);
   res.status(err.status || 500).json({
@@ -53,7 +37,7 @@ app.use((err, req, res, _next) => {
   });
 });
 
-// Connect to MongoDB once per cold start
+// Connect to MongoDB once per cold start (not per request)
 let isConnected = false;
 const ensureDB = async () => {
   if (!isConnected && process.env.MONGO_URI) {
@@ -62,7 +46,7 @@ const ensureDB = async () => {
   }
 };
 
-// Vercel serverless handler
+// Vercel serverless handler — do NOT call app.listen() here
 export default async function handler(req, res) {
   try {
     await ensureDB();
