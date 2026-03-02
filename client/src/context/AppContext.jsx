@@ -1,41 +1,41 @@
-// import {createContext} from 'react'
-// export const AppContext=createContext()
-// export const AppContextProvider=()=>{
-//     const value={
-
-//     }
-//     return(<AppContext.Provider value={value}>
-//         {props.children}
-//     </AppContext.Provider>)
-// }
-
-
-import React, { createContext,useEffect,useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { jobsData } from "../assets/assets";
 
 export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-  const [searchFilter,setSearchFilter]=useState({
-    title:'',
-    location:''
-  })
-  const [isSearched,setIsSearched]=useState(false)
-  const [jobs,setJobs]=useState([])
-  const [showRecruiterLogin,setShowRecruiterLogin]=useState(false)
-  //Function to fetch the jobs
-  const fetchJobs=async()=>{
-setJobs(jobsData)
-  }
-  useEffect(()=>{
-fetchJobs()
-  },[])
+  const [searchFilter, setSearchFilter] = useState({ title: '', location: '' });
+  const [isSearched, setIsSearched] = useState(false);
+  const [jobs, setJobs] = useState([]);
+  const [showRecruiterLogin, setShowRecruiterLogin] = useState(false);
+
+  // Recruiter / Company auth state
+  const [companyToken, setCompanyToken] = useState(
+    () => localStorage.getItem("companyToken") || null
+  );
+  const [companyData, setCompanyData] = useState(null);
+
+  const fetchJobs = async () => {
+    setJobs(jobsData);
+  };
+
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
+  // Persist token
+  useEffect(() => {
+    if (companyToken) localStorage.setItem("companyToken", companyToken);
+    else localStorage.removeItem("companyToken");
+  }, [companyToken]);
+
   const value = {
-    setSearchFilter,searchFilter,
-    isSearched,setIsSearched,
-    jobs,setJobs,
-    showRecruiterLogin,setShowRecruiterLogin,
-    // You can put global state or functions here later
+    setSearchFilter, searchFilter,
+    isSearched, setIsSearched,
+    jobs, setJobs,
+    showRecruiterLogin, setShowRecruiterLogin,
+    companyToken, setCompanyToken,
+    companyData, setCompanyData,
   };
 
   return (

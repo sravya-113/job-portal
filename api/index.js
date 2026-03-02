@@ -2,11 +2,12 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import connectDB from "../server/config/db.js";            // <- from project root, server/config/db.js
-import exampleRoutes from "../server/routes/example.js";  // <- server/routes/example.js
+import connectDB from "../server/config/db.js";
+import exampleRoutes from "../server/routes/example.js";
+import companyRoutes from "../server/routes/companyRoutes.js";
 import * as Sentry from "@sentry/node";
 import { nodeProfilingIntegration } from "@sentry/profiling-node";
-import { clerkWebhooks } from "../server/controllers/webhooks.js"; // <- adjust if file is elsewhere
+import { clerkWebhooks } from "../server/controllers/webhooks.js";
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.use(express.json());
 
 // Mount your existing route files under /api
 app.use("/api", exampleRoutes);
+app.use("/api/company", companyRoutes);
 
 // Add webhook route only if the handler exists
 if (typeof clerkWebhooks === "function") {
