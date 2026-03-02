@@ -28,26 +28,32 @@ if (process.env.SENTRY_DSN) {
   });
 }
 
-// Middlewares and routes
-app.use(cors());
+// Middlewares
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 
-// Mount your existing route files under /api
+// Routes
 app.use("/api", exampleRoutes);
 app.use("/api/company", companyRoutes);
 
-// Add webhook route only if the handler exists
+// Clerk webhook
 if (typeof clerkWebhooks === "function") {
   app.post("/webhooks", clerkWebhooks);
 }
 
-// Quick test endpoints
-app.get("/", (req, res) => res.send("API Working ✅"));
-app.get("/debug-sentry", (req, res) => {
-  throw new Error("🧨 Test Sentry error");
+// Health check
+app.get("/", (req, res) => res.json({ message: "API Working ✅" }));
+
+// Global JSON error handler — ensures errors never return plain text
+app.use((err, req, res, _next) => {
+  console.error("Express error:", err?.message || err);
+  res.status(err.status || 500).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+  });
 });
 
-// Connect to MongoDB once per cold start (not per request)
+// Connect to MongoDB once per cold start
 let isConnected = false;
 const ensureDB = async () => {
   if (!isConnected && process.env.MONGO_URI) {
@@ -56,13 +62,13 @@ const ensureDB = async () => {
   }
 };
 
-// Vercel serverless handler — do NOT call app.listen() here
+// Vercel serverless handler
 export default async function handler(req, res) {
   try {
-    await ensureDB();        // ensure DB connected before handling requests
-    return app(req, res);   // hand request to Express
+    await ensureDB();
+    return app(req, res);
   } catch (err) {
     console.error("Serverless handler error:", err);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 }
