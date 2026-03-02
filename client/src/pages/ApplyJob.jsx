@@ -52,7 +52,7 @@
 //               <span className='flex items-center gap-1'>
 //                 <img src={assets.location_icon} alt="" />
 //                 {jobData.location}
-                
+
 //               </span>
 //               <span className='flex items-center gap-1'>
 //               <img src={assets.person_icon} alt="" />
@@ -214,12 +214,18 @@ import JobCard from "../components/JobCard";
 import { assets } from "../assets/assets";
 import kconvert from "k-convert";
 import moment from "moment";
+import { useClerk, useUser } from "@clerk/clerk-react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./ApplyJob.css";
 
 const ApplyJob = () => {
   const { id } = useParams();
   const [jobData, setJobData] = useState(null);
+  const [applied, setApplied] = useState(false);
   const { jobs } = useContext(AppContext);
+  const { openSignIn } = useClerk();
+  const { isSignedIn } = useUser();
 
   const fetchJob = () => {
     const data = jobs.filter((job) => job._id === id);
@@ -230,10 +236,28 @@ const ApplyJob = () => {
     if (jobs.length > 0) fetchJob();
   }, [id, jobs]);
 
+  const handleApply = () => {
+    if (!isSignedIn) {
+      openSignIn();
+      return;
+    }
+    if (applied) {
+      toast.info("You have already applied for this job!", { position: "top-right" });
+      return;
+    }
+    // Mark as applied and show success
+    setApplied(true);
+    toast.success("🎉 Application submitted successfully!", {
+      position: "top-right",
+      autoClose: 4000,
+    });
+  };
+
   if (!jobData) return <Loading />;
 
   return (
     <>
+      <ToastContainer />
       <Navbar />
       <div className="apply-job-container">
         <div className="job-card">
@@ -264,7 +288,13 @@ const ApplyJob = () => {
             </div>
 
             <div className="job-header-right">
-              <button className="apply-btn">Apply Now</button>
+              <button
+                onClick={handleApply}
+                className={`apply-btn ${applied ? 'applied' : ''}`}
+                disabled={applied}
+              >
+                {applied ? '✓ Applied' : 'Apply Now'}
+              </button>
               <p>Posted {moment(jobData.date).fromNow()}</p>
             </div>
           </div>
@@ -276,7 +306,13 @@ const ApplyJob = () => {
                 className="rich-text"
                 dangerouslySetInnerHTML={{ __html: jobData.description }}
               ></div>
-              <button className="apply-btn">Apply Now</button>
+              <button
+                onClick={handleApply}
+                className={`apply-btn ${applied ? 'applied' : ''}`}
+                disabled={applied}
+              >
+                {applied ? '✓ Applied' : 'Apply Now'}
+              </button>
             </div>
 
             <div className="more-jobs-section">
