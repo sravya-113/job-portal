@@ -17,7 +17,7 @@
 //   return
 //    <>
 //    <Navbar/>
-   
+
 //    <div className='conatiner px-4 min-h-[65vh] 2xl:px-20 mx-auto my-10'>
 //     <h2 className='text-xl font-semibold'>Your Resume</h2>
 //     <div className='flex gap-2 mb-6 mt-3'>
@@ -72,7 +72,7 @@
 //    </div>
 //    <Footer/>
 //   </>
-  
+
 // };
 
 // export default Applications;
@@ -390,7 +390,7 @@ import "./Applications.css";
 
 const Applications = () => {
   const [isEdit, setIsEdit] = useState(false);
-  const [resume, setResume] = useState(null);
+  const [_resume, setResume] = useState(null);
 
   // MOCK DATA for jobs applied
   const jobsApplied = [
@@ -488,13 +488,12 @@ const Applications = () => {
                 <td>{moment(job.date).format("ll")}</td>
                 <td>
                   <span
-                    className={`status-badge ${
-                      job.status === "Accepted"
+                    className={`status-badge ${job.status === "Accepted"
                         ? "status-accepted"
                         : job.status === "Rejected"
-                        ? "status-rejected"
-                        : "status-pending"
-                    }`}
+                          ? "status-rejected"
+                          : "status-pending"
+                      }`}
                   >
                     {job.status}
                   </span>

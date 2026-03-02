@@ -78,6 +78,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import Quill from "quill";
 import { JobCategories, JobLocations } from "../assets/assets";
+import './AddJob.css';
 
 const AddJob = () => {
   const [title, setTitle] = useState("");
