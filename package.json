@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Job portal backend with Node.js, Express, MongoDB, and Sentry v10",
   "main": "server/server.js",
+  "type": "module",
   "scripts": {
     "start": "node server/server.js",
-    "dev": "nodemon server/server.js"
+    "dev": "nodemon server/server.js",
+    "build": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "@sentry/node": "^10.19.0",
